@@ -11,7 +11,7 @@ namespace Warden.Services.Organizations
         public static void Main(string[] args)
         {
             WebServiceHost
-                .Create<Startup>(port: 10002)
+                .Create<Startup>(port: 5052)
                 .UseAutofac(Bootstrapper.LifetimeScope)
                 .UseRabbitMq(queueName: typeof(Program).Namespace)
                 .SubscribeToCommand<CreateOrganization>()
