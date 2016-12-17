@@ -1,4 +1,6 @@
-﻿namespace Warden.Services.Organizations.Shared.Dto
+﻿using System;
+
+namespace Warden.Services.Organizations.Shared.Dto
 {
     public class UserInOrganizationDto
     {
