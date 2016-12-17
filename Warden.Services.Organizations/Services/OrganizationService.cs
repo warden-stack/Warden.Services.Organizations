@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Warden.Common.Domain;
+using Warden.Common.Exceptions;
 using Warden.Common.Extensions;
 using Warden.Common.Types;
 using Warden.Services.Organizations.Domain;

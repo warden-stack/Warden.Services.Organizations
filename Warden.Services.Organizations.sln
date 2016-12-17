@@ -9,6 +9,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Warden.Services.Organizatio
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Warden.Services.Organizations.Tests.EndToEnd", "Warden.Services.Organizations.Tests.EndToEnd\Warden.Services.Organizations.Tests.EndToEnd.xproj", "{0786521F-E3AA-4F07-9586-4CF9ED675A63}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Warden.Services.Organizations.Shared", "Warden.Services.Organizations.Shared\Warden.Services.Organizations.Shared.xproj", "{CE867112-AD6B-4091-8296-608E106C3971}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0786521F-E3AA-4F07-9586-4CF9ED675A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0786521F-E3AA-4F07-9586-4CF9ED675A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0786521F-E3AA-4F07-9586-4CF9ED675A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE867112-AD6B-4091-8296-608E106C3971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE867112-AD6B-4091-8296-608E106C3971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE867112-AD6B-4091-8296-608E106C3971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE867112-AD6B-4091-8296-608E106C3971}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
