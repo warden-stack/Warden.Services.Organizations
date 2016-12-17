@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using RawRabbit;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Wardens;
-using Warden.Common.Events.Wardens;
 using Warden.Services.Organizations.Services;
+using Warden.Services.Organizations.Shared.Commands;
+using Warden.Services.Organizations.Shared.Events;
 
 namespace Warden.Services.Organizations.Handlers
 {
@@ -21,7 +21,8 @@ namespace Warden.Services.Organizations.Handlers
         public async Task HandleAsync(DeleteWarden command)
         {
             await _wardenService.DeleteWardenAsync(command.WardenId, command.OrganizationId, command.UserId);
-            await _bus.PublishAsync(new WardenDeleted(command.Request.Id, command.WardenId, command.OrganizationId));
+            await _bus.PublishAsync(new WardenDeleted(command.Request.Id, command.UserId,
+                command.WardenId, command.OrganizationId));
         }
     }
 }

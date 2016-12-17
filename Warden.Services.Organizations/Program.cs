@@ -16,8 +16,8 @@ namespace Warden.Services.Organizations
                 .SubscribeToCommand<CreateOrganization>()
                 .SubscribeToCommand<CreateWarden>()
                 .SubscribeToCommand<DeleteWarden>()
-                .SubscribeToEvent<NewUserSignedIn>()
-                .SubscribeToEvent<UserSignedIn>()
+                .SubscribeToEvent<SignedIn>()
+                .SubscribeToEvent<SignedUp>()
                 .Build()
                 .Run();
         }

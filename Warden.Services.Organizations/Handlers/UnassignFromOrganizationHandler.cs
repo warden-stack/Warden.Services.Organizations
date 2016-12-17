@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Users;
 using Warden.Services.Organizations.Services;
+using Warden.Services.Organizations.Shared.Commands;
 
 namespace Warden.Services.Organizations.Handlers
 {
-    public class UnassignFromOrganizationHandler : ICommandHandler<UnassignFromOrganization>
+    public class UnassignFromOrganizationHandler : ICommandHandler<UnassignUserFromOrganization>
     {
         private readonly IOrganizationService _organizationService;
 
@@ -14,7 +14,7 @@ namespace Warden.Services.Organizations.Handlers
             _organizationService = organizationService;
         }
 
-        public async Task HandleAsync(UnassignFromOrganization command)
+        public async Task HandleAsync(UnassignUserFromOrganization command)
         {
             await _organizationService.UnassignUserAsync(command.OrganizationId, command.UserId);
         }

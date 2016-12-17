@@ -7,14 +7,10 @@ using RawRabbit.vNext;
 using RawRabbit.Configuration;
 using System.Reflection;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Organizations;
-using Warden.Common.Commands.Wardens;
 using Warden.Common.Events;
-using Warden.Common.Events.Users;
 using Warden.Common.Extensions;
 using Warden.Common.Mongo;
 using Warden.Common.Nancy;
-using Warden.Services.Organizations.Handlers;
 using Warden.Services.Organizations.Repositories;
 using Warden.Services.Organizations.Services;
 

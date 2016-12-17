@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using RawRabbit;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Organizations;
-using Warden.Common.Events.Organizations;
 using Warden.Services.Organizations.Services;
+using Warden.Services.Organizations.Shared.Commands;
+using Warden.Services.Organizations.Shared.Events;
 
 namespace Warden.Services.Organizations.Handlers
 {

@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using RawRabbit;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Wardens;
-using Warden.Common.Events.Wardens;
 using Warden.Services.Organizations.Services;
+using Warden.Services.Organizations.Shared.Commands;
+using Warden.Services.Organizations.Shared.Events;
 
 namespace Warden.Services.Organizations.Handlers
 {
@@ -24,8 +24,8 @@ namespace Warden.Services.Organizations.Handlers
         {
             await _wardenService.CreateWardenAsync(command.WardenId,
                 command.Name, command.OrganizationId, command.UserId, command.Enabled);
-            await _bus.PublishAsync(new WardenCreated(command.Request.Id, command.WardenId,
-                command.Name, command.OrganizationId, command.UserId,
+            await _bus.PublishAsync(new WardenCreated(command.Request.Id, command.UserId,
+                command.WardenId, command.Name, command.OrganizationId,
                 DateTime.UtcNow, command.Enabled));
         }
     }
