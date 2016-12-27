@@ -43,10 +43,11 @@ namespace Warden.Services.Organizations.Framework
                 builder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
                 builder.RegisterType<WardenService>().As<IWardenService>();
                 builder.RegisterType<OrganizationService>().As<IOrganizationService>();
+                builder.RegisterInstance(AutoMapperConfig.InitializeMapper());
 
-                var coreAssembly = typeof(Startup).GetTypeInfo().Assembly;
-                builder.RegisterAssemblyTypes(coreAssembly).AsClosedTypesOf(typeof(IEventHandler<>));
-                builder.RegisterAssemblyTypes(coreAssembly).AsClosedTypesOf(typeof(ICommandHandler<>));
+                var assembly = typeof(Startup).GetTypeInfo().Assembly;
+                builder.RegisterAssemblyTypes(assembly).AsClosedTypesOf(typeof(IEventHandler<>));
+                builder.RegisterAssemblyTypes(assembly).AsClosedTypesOf(typeof(ICommandHandler<>));
             });
             LifetimeScope = container;
         }
