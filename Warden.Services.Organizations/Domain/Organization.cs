@@ -44,6 +44,11 @@ namespace Warden.Services.Organizations.Domain
             UpdatedAt = DateTime.UtcNow;
         }
 
+        public bool HasAccess(string userId)
+        {
+            return OwnerId == userId || Users.Any(x => x.UserId == userId);
+        }
+
         public void SetName(string name)
         {
             if (name.Empty())

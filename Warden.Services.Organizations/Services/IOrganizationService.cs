@@ -8,6 +8,7 @@ namespace Warden.Services.Organizations.Services
     public interface IOrganizationService
     {
         Task<Maybe<Organization>> GetAsync(Guid id);
+        Task<Maybe<Organization>> GetAsync(string userId, Guid organizationId);
         Task<Maybe<PagedResult<Organization>>> BrowseAsync(string userId);
         Task UpdateAsync(Guid id, string name, string userId);
         Task CreateAsync(Guid id, string userId, string name, string description = "");

@@ -14,8 +14,7 @@ namespace Warden.Services.Organizations.Services
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
 
-        public OrganizationService(
-            IOrganizationRepository organizationRepository, 
+        public OrganizationService(IOrganizationRepository organizationRepository, 
             IUserRepository userRepository)
         {
             _organizationRepository = organizationRepository;
@@ -24,6 +23,18 @@ namespace Warden.Services.Organizations.Services
 
         public async Task<Maybe<Organization>> GetAsync(Guid id)
             => await _organizationRepository.GetAsync(id);
+
+        public async Task<Maybe<Organization>> GetAsync(string userId, Guid organizationId)
+        {
+            var organization = await GetAsync(organizationId);
+            if (organization.HasNoValue)
+                return null;
+
+            if (!organization.Value.HasAccess(userId))
+                return null;
+                
+            return organization;
+        }            
 
         public async Task<Maybe<PagedResult<Organization>>> BrowseAsync(string userId) 
             => await _organizationRepository.BrowseAsync(userId, string.Empty);
