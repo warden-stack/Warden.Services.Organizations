@@ -11,8 +11,10 @@ using Warden.Common.Events;
 using Warden.Common.Extensions;
 using Warden.Common.Mongo;
 using Warden.Common.Nancy;
+using Warden.Common.Nancy.Serialization;
 using Warden.Services.Organizations.Repositories;
 using Warden.Services.Organizations.Services;
+using Newtonsoft.Json;
 
 namespace Warden.Services.Organizations.Framework
 {
@@ -35,6 +37,7 @@ namespace Warden.Services.Organizations.Framework
                 builder.RegisterInstance(_configuration.GetSettings<MongoDbSettings>());
                 builder.RegisterModule<MongoDbModule>();
                 builder.RegisterType<MongoDbInitializer>().As<IDatabaseInitializer>();
+                builder.RegisterType<CustomJsonSerializer>().As<JsonSerializer>().SingleInstance();
                 var rawRabbitConfiguration = _configuration.GetSettings<RawRabbitConfiguration>();
                 builder.RegisterInstance(rawRabbitConfiguration).SingleInstance();
                 builder.RegisterInstance(BusClientFactory.CreateDefault(rawRabbitConfiguration))
