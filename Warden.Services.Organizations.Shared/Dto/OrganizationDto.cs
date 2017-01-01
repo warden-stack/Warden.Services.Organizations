@@ -6,7 +6,7 @@ namespace Warden.Services.Organizations.Shared.Dto
     public class OrganizationDto
     {
         public Guid Id { get; set; }
-        public string OwnerId { get; set; }
+        public UserInOrganizationDto Owner { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<UserInOrganizationDto> Users { get; set; }
