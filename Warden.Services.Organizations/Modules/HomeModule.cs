@@ -1,6 +1,4 @@
-﻿using Nancy;
-
-namespace Warden.Services.Organizations.Modules
+﻿namespace Warden.Services.Organizations.Modules
 {
     public class HomeModule : ModuleBase
     {
