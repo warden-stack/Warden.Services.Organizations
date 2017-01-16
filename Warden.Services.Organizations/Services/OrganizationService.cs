@@ -6,6 +6,7 @@ using Warden.Common.Extensions;
 using Warden.Common.Types;
 using Warden.Services.Organizations.Domain;
 using Warden.Services.Organizations.Repositories;
+using Warden.Services.Organizations.Shared;
 
 namespace Warden.Services.Organizations.Services
 {
@@ -57,16 +58,23 @@ namespace Warden.Services.Organizations.Services
         public async Task CreateAsync(Guid id, string userId, string name, string description = "")
         {
             if (name.Empty())
-                throw new ServiceException("Organization name can not be empty.");
+            {
+                throw new ServiceException(OperationCodes.EmptyOrganizationName, "Organization name can not be empty.");
+            }
 
             var userValue = await _userRepository.GetAsync(userId);
             if (userValue.HasNoValue)
-                throw new ServiceException($"User has not been found for given id: '{userId}'.");
+            {
+                throw new ServiceException(OperationCodes.UserNotFound, $"User has not been found for given id: '{userId}'.");
+            }
 
             var organizationValue = await _organizationRepository.GetAsync(name, userId);
             if (organizationValue.HasValue)
-                throw new ServiceException($"There's already an organization with name: '{name}' " +
+            {
+                throw new ServiceException(OperationCodes.OrganizationNameInUse, 
+                            $"There's already an organization with name: '{name}' " +
                                            $"for user with id: '{userId}'.");
+            }
 
             var organization = new Organization(id, name, userValue.Value, description);
             await _organizationRepository.AddAsync(organization);

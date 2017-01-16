@@ -4,6 +4,7 @@ using System.Linq;
 using Warden.Common.Domain;
 using Warden.Common.Exceptions;
 using Warden.Common.Extensions;
+using Warden.Services.Organizations.Shared;
 
 namespace Warden.Services.Organizations.Domain
 {
@@ -101,11 +102,18 @@ namespace Warden.Services.Organizations.Domain
         public void AddWarden(Guid id, User owner, string name, bool enabled = true)
         {
             if (name.Empty())
-                throw new DomainException("Can not add a warden without a name to the organization.");
+            {
+                throw new DomainException(OperationCodes.EmptyWardenName, 
+                        "Can not add a warden without a name to the organization.");
+            }
 
             var warden = GetWardenByName(name);
             if (warden != null)
-                throw new DomainException($"Warden with name: '{name}' has been already added.");
+            {
+                throw new DomainException(OperationCodes.WardenNameInUse, 
+                         $"Warden with name: '{name}' has been already added.");
+            }
+
 
             warden = new Warden(id, owner, name,  enabled);
             _wardens.Add(warden);
@@ -117,7 +125,10 @@ namespace Warden.Services.Organizations.Domain
             var warden = GetWardenByNameOrFail(name);
             var existingWarden = GetWardenByName(newName);
             if(existingWarden != null && existingWarden.Id != warden.Id)
-                throw new DomainException($"Warden with name: '{newName}' already exists.");
+            {
+                throw new DomainException(OperationCodes.WardenNameInUse, 
+                        $"Warden with name: '{newName}' already exists.");
+            }
 
             warden.SetName(newName);
             UpdatedAt = DateTime.UtcNow;
@@ -126,7 +137,10 @@ namespace Warden.Services.Organizations.Domain
         public void RemoveWarden(string name)
         {
             if (name.Empty())
-                throw new DomainException("Can not remove a warden without a name from the organization.");
+            {
+                throw new DomainException(OperationCodes.EmptyWardenName,
+                         "Can not remove a warden without a name from the organization.");
+            }
 
             var warden = GetWardenByNameOrFail(name);
             _wardens.Remove(warden);
@@ -150,11 +164,17 @@ namespace Warden.Services.Organizations.Domain
         public Warden GetWardenByNameOrFail(string name)
         {
             if (name.Empty())
-                throw new DomainException("Warden name can not be empty.");
+            {
+                throw new DomainException(OperationCodes.EmptyWardenName, 
+                    "Warden name can not be empty.");
+            }
 
             var warden = GetWardenByName(name);
             if (warden == null)
-                throw new DomainException($"Warden with name: '{name}' has not been found.");
+            {
+                throw new DomainException(OperationCodes.WardenNotFound,
+                    $"Warden with name: '{name}' has not been found.");
+            }
 
             return warden;
         }

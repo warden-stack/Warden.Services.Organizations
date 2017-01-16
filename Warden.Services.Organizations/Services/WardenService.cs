@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Warden.Common.Exceptions;
 using Warden.Services.Organizations.Domain;
 using Warden.Services.Organizations.Repositories;
+using Warden.Services.Organizations.Shared;
 
 namespace Warden.Services.Organizations.Services
 {
@@ -24,7 +26,10 @@ namespace Warden.Services.Organizations.Services
 
             var user = await _userRepository.GetAsync(userId);
             if (user.HasNoValue)
-                throw new ArgumentException($"User {userId} has not been found.");
+            {
+                throw new ServiceException(OperationCodes.UserNotFound, 
+                            $"User {userId} has not been found.");
+            }
 
             organization.AddWarden(id, user.Value, name, enabled);
             await _organizationRepository.UpdateAsync(organization);
