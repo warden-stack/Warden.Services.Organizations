@@ -5,18 +5,18 @@ using Warden.Services.Organizations.Shared.Commands;
 
 namespace Warden.Services.Organizations.Handlers
 {
-    public class UnassignFromOrganizationHandler : ICommandHandler<UnassignUserFromOrganization>
+    public class UpdateOrganizationHandler : ICommandHandler<UpdateOrganization>
     {
         private readonly IOrganizationService _organizationService;
 
-        public UnassignFromOrganizationHandler(IOrganizationService organizationService)
+        public UpdateOrganizationHandler(IOrganizationService organizationService)
         {
             _organizationService = organizationService;
         }
 
-        public async Task HandleAsync(UnassignUserFromOrganization command)
+        public async Task HandleAsync(UpdateOrganization command)
         {
-            await _organizationService.UnassignUserAsync(command.OrganizationId, command.UserId);
+            await _organizationService.UpdateAsync(command.Id, command.Name, command.UserId);
         }
     }
 }

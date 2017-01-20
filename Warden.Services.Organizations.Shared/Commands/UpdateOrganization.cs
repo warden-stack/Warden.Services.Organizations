@@ -3,7 +3,7 @@ using Warden.Common.Commands;
 
 namespace Warden.Services.Organizations.Shared.Commands
 {
-    public class EditOrganization : IAuthenticatedCommand
+    public class UpdateOrganization : IAuthenticatedCommand
     {
         public Request Request { get; set; }
         public string UserId { get; set; }

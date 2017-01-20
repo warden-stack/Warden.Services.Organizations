@@ -30,12 +30,9 @@ namespace Warden.Services.Organizations.Handlers
             await _handler
                 .Run(async () => await _wardenService.CreateWardenAsync(command.WardenId,
                     command.Name, command.OrganizationId, command.UserId, command.Enabled))
-                .OnSuccess(async () =>
-                {
-                    await _bus.PublishAsync(new WardenCreated(command.Request.Id, command.UserId,
+                .OnSuccess(async () => await _bus.PublishAsync(new WardenCreated(command.Request.Id, command.UserId,
                             command.WardenId, command.Name, command.OrganizationId,
-                            DateTime.UtcNow, command.Enabled));
-                })
+                            DateTime.UtcNow, command.Enabled)))
                 .OnCustomError(async ex => await _bus.PublishAsync(new CreateWardenRejected(command.Request.Id,
                     command.UserId, ex.Code, ex.Message, command.Name, command.OrganizationId)))
                 .OnError(async (ex, logger) =>

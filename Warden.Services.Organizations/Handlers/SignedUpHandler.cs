@@ -17,10 +17,6 @@ namespace Warden.Services.Organizations.Handlers
 
         public async Task HandleAsync(SignedUp @event)
         {
-            var user = await _userRepository.GetAsync(@event.UserId);
-            if (user.HasValue)
-                return;
-
             await _userRepository.AddAsync(new User(@event.UserId, @event.Email, @event.Role, @event.State));
         }
     }
