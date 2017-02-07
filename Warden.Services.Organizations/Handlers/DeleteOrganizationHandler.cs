@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using RawRabbit;
 using Warden.Common.Commands;
 using Warden.Common.Handlers;
