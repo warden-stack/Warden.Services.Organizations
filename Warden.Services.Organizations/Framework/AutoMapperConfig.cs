@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using AutoMapper;
 using Warden.Services.Organizations.Domain;
-using Warden.Services.Organizations.Shared.Dto;
+using Warden.Services.Organizations.Dto;
 
 namespace Warden.Services.Organizations.Framework
 {

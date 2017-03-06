@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Warden.Common.Commands;
+using Warden.Messages.Commands;
 using Warden.Services.Organizations.Services;
-using Warden.Services.Organizations.Shared.Commands;
+using Warden.Messages.Commands.Organizations;
 
 namespace Warden.Services.Organizations.Handlers
 {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Warden.Common.Events;
+using Warden.Messages.Events;
 using Warden.Services.Organizations.Domain;
 using Warden.Services.Organizations.Repositories;
-using Warden.Services.Users.Shared.Events;
+using Warden.Messages.Events.Users;
 
 namespace Warden.Services.Organizations.Handlers
 {

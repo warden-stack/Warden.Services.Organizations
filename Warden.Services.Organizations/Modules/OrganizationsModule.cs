@@ -3,7 +3,7 @@ using Nancy;
 using Warden.Services.Organizations.Domain;
 using Warden.Services.Organizations.Queries;
 using Warden.Services.Organizations.Services;
-using Warden.Services.Organizations.Shared.Dto;
+using Warden.Services.Organizations.Dto;
 
 namespace Warden.Services.Organizations.Modules
 {

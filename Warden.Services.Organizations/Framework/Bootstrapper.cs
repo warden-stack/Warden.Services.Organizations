@@ -4,8 +4,8 @@ using Nancy.Bootstrapper;
 using NLog;
 using RawRabbit.Configuration;
 using System.Reflection;
-using Warden.Common.Commands;
-using Warden.Common.Events;
+using Warden.Messages.Commands;
+using Warden.Messages.Events;
 using Warden.Common.Exceptionless;
 using Warden.Common.Extensions;
 using Warden.Common.Mongo;
@@ -18,6 +18,7 @@ using Warden.Services.Organizations.Services;
 using Newtonsoft.Json;
 using Warden.Common.Handlers;
 using Nancy;
+using Nancy.Bootstrappers.Autofac;
 
 namespace Warden.Services.Organizations.Framework
 {

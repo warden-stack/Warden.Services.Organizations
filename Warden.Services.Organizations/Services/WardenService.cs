@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Warden.Common.Exceptions;
 using Warden.Services.Organizations.Domain;
 using Warden.Services.Organizations.Repositories;
-using Warden.Services.Organizations.Shared;
 
 namespace Warden.Services.Organizations.Services
 {

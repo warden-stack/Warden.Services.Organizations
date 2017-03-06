@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Warden.Services.Organizations.Shared.Dto
+namespace Warden.Services.Organizations.Dto
 {
     public class OrganizationDto
     {

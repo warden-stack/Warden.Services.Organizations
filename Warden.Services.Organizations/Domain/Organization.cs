@@ -4,7 +4,7 @@ using System.Linq;
 using Warden.Common.Domain;
 using Warden.Common.Exceptions;
 using Warden.Common.Extensions;
-using Warden.Services.Organizations.Shared;
+using Warden.Services.Organizations;
 
 namespace Warden.Services.Organizations.Domain
 {

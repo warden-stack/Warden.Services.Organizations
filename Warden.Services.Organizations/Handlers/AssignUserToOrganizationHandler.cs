@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using RawRabbit;
-using Warden.Common.Commands;
+using Warden.Messages.Commands;
 using Warden.Common.Handlers;
 using Warden.Services.Organizations.Services;
-using Warden.Services.Organizations.Shared;
-using Warden.Services.Organizations.Shared.Commands;
-using Warden.Services.Organizations.Shared.Events;
+using Warden.Services.Organizations;
+using Warden.Messages.Commands.Organizations;
+using Warden.Messages.Events.Organizations;
 
 namespace Warden.Services.Organizations.Handlers
 {
