@@ -18,21 +18,10 @@ namespace Warden.Services.Organizations.Repositories
             _database = database;
         }
 
-        public async Task<Maybe<PagedResult<Organization>>> BrowseAsync(string userId, string ownerId,
-            int page = 1, int results = 10)
-        {
-            var query = new BrowseOrganizations
-            {
-                OwnerId = ownerId,
-                UserId = userId,
-                Page = page,
-                Results = results
-            };
-
-            return await _database.Organizations()
+        public async Task<Maybe<PagedResult<Organization>>> BrowseAsync(BrowseOrganizations query)
+            => await _database.Organizations()
                 .Query(query)
                 .PaginateAsync(query);
-        }
 
         public async Task<Maybe<Organization>> GetAsync(Guid id)
             => await _database.Organizations().GetByIdAsync(id);

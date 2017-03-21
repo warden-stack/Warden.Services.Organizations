@@ -4,6 +4,7 @@ using Warden.Common.Exceptions;
 using Warden.Common.Extensions;
 using Warden.Common.Types;
 using Warden.Services.Organizations.Domain;
+using Warden.Services.Organizations.Queries;
 using Warden.Services.Organizations.Repositories;
 
 namespace Warden.Services.Organizations.Services
@@ -35,8 +36,8 @@ namespace Warden.Services.Organizations.Services
             return organization;
         }            
 
-        public async Task<Maybe<PagedResult<Organization>>> BrowseAsync(string userId) 
-            => await _organizationRepository.BrowseAsync(userId, string.Empty);
+        public async Task<Maybe<PagedResult<Organization>>> BrowseAsync(BrowseOrganizations query) 
+            => await _organizationRepository.BrowseAsync(query);
 
         public async Task UpdateAsync(Guid id, string name, string userId)
         {

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Warden.Common.Types;
 using Warden.Services.Organizations.Domain;
+using Warden.Services.Organizations.Queries;
 
 namespace Warden.Services.Organizations.Services
 {
@@ -9,7 +10,7 @@ namespace Warden.Services.Organizations.Services
     {
         Task<Maybe<Organization>> GetAsync(Guid id);
         Task<Maybe<Organization>> GetAsync(string userId, Guid organizationId);
-        Task<Maybe<PagedResult<Organization>>> BrowseAsync(string userId);
+        Task<Maybe<PagedResult<Organization>>> BrowseAsync(BrowseOrganizations query);
         Task UpdateAsync(Guid id, string name, string userId);
         Task CreateAsync(Guid id, string userId, string name, string description = "");
         Task CreateDefaultAsync(Guid id, string userId);

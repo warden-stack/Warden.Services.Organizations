@@ -21,7 +21,7 @@ namespace Warden.Services.Organizations.Repositories.Queries
             return await users.AsQueryable().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public static async Task<User> GetByUserId(this IMongoCollection<User> users, string externalId)
+        public static async Task<User> GetByUserIdAsync(this IMongoCollection<User> users, string externalId)
         {
             if (externalId.Empty())
                 return null;
