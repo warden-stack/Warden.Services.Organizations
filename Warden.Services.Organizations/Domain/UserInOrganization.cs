@@ -8,6 +8,7 @@ namespace Warden.Services.Organizations.Domain
     {
         public string UserId { get; protected set; }
         public string Email { get; protected set; }
+        public string Name { get; protected set; }
         public string Role { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
 
@@ -22,6 +23,7 @@ namespace Warden.Services.Organizations.Domain
 
             UserId = user.UserId;
             Email = user.Email;
+            Name = user.Name;
             Role = role;
             CreatedAt = DateTime.UtcNow;
         }
